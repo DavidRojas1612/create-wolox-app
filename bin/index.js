@@ -3,10 +3,12 @@
 import * as prompts from '@clack/prompts'
 import {setTimeout} from 'node:timers/promises'
 import color from 'picocolors'
-import {TEMPLATES_URL} from '../lib/constants.mjs'
 import {generateProjectApp} from '../lib/generate.mjs'
+import {gitInit} from '../lib/initGit.mjs'
+import {npmInstall} from '../lib/installDeps.mjs'
 
-const {intro, outro, confirm, select, spinner, isCancel, cancel, text} = prompts
+const {intro, outro, confirm, select, spinner, isCancel, cancel, text, note} =
+  prompts
 const sleep = setTimeout
 
 async function main() {
@@ -27,7 +29,7 @@ async function main() {
     options: [
       {value: 'React', label: 'React'},
       {value: 'NextJS', label: 'Next.js'},
-      {value: null, label: 'Angular', hint: 'coming soon...'},
+      {value: 'Angular/base', label: 'Angular'},
       {value: null, label: 'Vue', hint: 'coming soon...'},
     ],
   })
@@ -39,14 +41,19 @@ async function main() {
 
   const s = spinner()
   s.start(`Creating your ${projectType} project`)
-
   await generateProjectApp(projectName, projectType)
+  s.stop(`${projectName} project has been created!!`)
 
-  s.stop('Done. Now run:')
+  s.start(`Initializing a git repository.`)
+  await gitInit(projectName)
+  s.stop('Initialized a git repository.')
+
+  s.start(`Installing dependencies...`)
+  await npmInstall(projectName, 'dependencies')
+  s.stop(`${projectName} Ready!!`)
 
   outro(`
     cd ${projectName}
-    npm install
     npm run dev
   `)
 
