@@ -1,5 +1,4 @@
 const degit = require('degit')
-const path = require('path')
 
 const TEMPLATE_REACT_APP = 'Wolox/react-wolox-template.git#main'
 
