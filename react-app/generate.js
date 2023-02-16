@@ -1,5 +1,5 @@
-import degit from 'degit'
-import path from 'path'
+const degit = require('degit')
+const path = require('path')
 
 const TEMPLATE_REACT_APP = 'Wolox/react-wolox-template.git#main'
 
@@ -14,4 +14,4 @@ async function generateReactApp(projectName) {
   return emitter.clone(PATH_PROJECT)
 }
 
-export {generateReactApp}
+module.export = {generateReactApp}

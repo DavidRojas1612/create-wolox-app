@@ -1,4 +1,4 @@
-import {
+const {
   intro,
   outro,
   confirm,
@@ -7,11 +7,10 @@ import {
   isCancel,
   cancel,
   text,
-} from '@clack/prompts'
-import {setTimeout as sleep} from 'node:timers/promises'
-import color from 'picocolors'
-
-import {generateReactApp} from './react-app/generate.mjs'
+} = require('@clack/prompts')
+const {setTimeout: sleep} = require('node:timers/promises')
+const color = require('picocolors')
+const {generateReactApp} = require('./react-app/generate.js')
 
 async function main() {
   intro(color.inverse(' create-my-wolox-app '))

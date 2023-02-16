@@ -1,9 +1,8 @@
 {
   "name": "create-wolox-app",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "CLI to generate frontend projects with the wolox standarts",
   "main": "index.js",
-  "type": "module",
   "bin": {
     "create-wolox-app": "./index.js"
   },
