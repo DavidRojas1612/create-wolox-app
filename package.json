@@ -1,0 +1,32 @@
+{
+  "name": "create-wolox-app",
+  "version": "1.0.0",
+  "description": "CLI to generate frontend projects with the wolox standarts",
+  "main": "index.js",
+  "dependencies": {
+    "sisteransi": "^1.0.5",
+    "picocolors": "^1.0.0",
+    "degit": "^2.8.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/DavidRojas1612/create-wolox-app.git"
+  },
+  "keywords": [
+    "CLI",
+    "Wolox",
+    "React",
+    "Angular",
+    "Vue"
+  ],
+  "author": "David Rojas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DavidRojas1612/create-wolox-app/issues"
+  },
+  "homepage": "https://github.com/DavidRojas1612/create-wolox-app#readme"
+}
