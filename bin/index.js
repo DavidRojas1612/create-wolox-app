@@ -1,9 +1,10 @@
 #! /usr/bin/env node
 
-const prompts = require('@clack/prompts')
-const {setTimeout} = require('node:timers/promises')
-const color = require('picocolors')
-const {generateReactApp} = require('../react-app/generate.js')
+import * as prompts from '@clack/prompts'
+import {setTimeout} from 'node:timers/promises'
+import color from 'picocolors'
+import {TEMPLATES_URL} from '../lib/constants.mjs'
+import {generateProjectApp} from '../lib/generate.mjs'
 
 const {intro, outro, confirm, select, spinner, isCancel, cancel, text} = prompts
 const sleep = setTimeout
@@ -24,7 +25,8 @@ async function main() {
   const projectType = await select({
     message: 'Pick a project type.',
     options: [
-      {value: 'react', label: 'React'},
+      {value: 'React', label: 'React'},
+      {value: 'NextJS', label: 'Next.js'},
       {value: null, label: 'Angular', hint: 'coming soon...'},
       {value: null, label: 'Vue', hint: 'coming soon...'},
     ],
@@ -38,7 +40,7 @@ async function main() {
   const s = spinner()
   s.start(`Creating your ${projectType} project`)
 
-  await generateReactApp(projectName)
+  await generateProjectApp(projectName, projectType)
 
   s.stop('Done. Now run:')
 
