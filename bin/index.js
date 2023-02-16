@@ -1,16 +1,10 @@
-const {
-  intro,
-  outro,
-  confirm,
-  select,
-  spinner,
-  isCancel,
-  cancel,
-  text,
-} = require('@clack/prompts')
-const {setTimeout: sleep} = require('node:timers/promises')
+const prompts = require('@clack/prompts')
+const {setTimeout} = require('node:timers/promises')
 const color = require('picocolors')
-const {generateReactApp} = require('./react-app/generate.js')
+const {generateReactApp} = require('../react-app/generate.js')
+
+const {intro, outro, confirm, select, spinner, isCancel, cancel, text} = prompts
+const sleep = setTimeout
 
 async function main() {
   intro(color.inverse(' create-my-wolox-app '))
