@@ -28,7 +28,7 @@ async function main() {
     message: 'Pick a project type.',
     options: [
       {value: 'React', label: 'React'},
-      {value: 'NextJS', label: 'Next.js'},
+      // {value: 'NextJS', label: 'Next.js'}, // to fix
       {value: 'Angular/base', label: 'Angular'},
       {value: null, label: 'Vue', hint: 'coming soon...'},
     ],
