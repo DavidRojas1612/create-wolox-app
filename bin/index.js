@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const prompts = require('@clack/prompts')
 const {setTimeout} = require('node:timers/promises')
 const color = require('picocolors')
