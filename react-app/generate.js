@@ -13,4 +13,4 @@ async function generateReactApp(projectName) {
   return emitter.clone(PATH_PROJECT)
 }
 
-module.export = {generateReactApp}
+module.exports = {generateReactApp}
