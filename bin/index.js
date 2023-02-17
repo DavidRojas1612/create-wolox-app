@@ -30,7 +30,7 @@ async function main() {
       {value: 'React', label: 'React'},
       // {value: 'NextJS', label: 'Next.js'}, // to fix
       {value: 'Angular/base', label: 'Angular'},
-      {value: null, label: 'Vue', hint: 'coming soon...'},
+      // {value: null, label: 'Vue', hint: 'coming soon...'},
     ],
   })
 
@@ -39,18 +39,24 @@ async function main() {
     return process.exit(0)
   }
 
-  const s = spinner()
-  s.start(`Creating your ${projectType} project`)
-  await generateProjectApp(projectName, projectType)
-  s.stop(`${projectName} project has been created!!`)
+  try {
+    const s = spinner()
+    s.start(`Creating your ${projectType} project`)
+    await generateProjectApp(projectName, projectType)
+    s.stop(`${projectName} project has been created!!`)
 
-  s.start(`Initializing a git repository.`)
-  await gitInit(projectName)
-  s.stop('Initialized a git repository.')
+    s.start(`Installing dependencies...`)
+    await npmInstall(projectName, 'dependencies')
+    s.stop(`${projectName} Ready!!`)
 
-  s.start(`Installing dependencies...`)
-  await npmInstall(projectName, 'dependencies')
-  s.stop(`${projectName} Ready!!`)
+    s.start(`Initializing a git repository.`)
+    await gitInit(projectName)
+    s.stop('Initialized a git repository.')
+  } catch (error) {
+    console.log('error', error)
+    cancel('Operation cancelled')
+    return process.exit(0)
+  }
 
   outro(`
     cd ${projectName}
